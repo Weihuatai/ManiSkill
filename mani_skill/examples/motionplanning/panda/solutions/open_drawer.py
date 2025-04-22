@@ -63,7 +63,7 @@ def solve(env: OpenDrawerEnv, seed=None, debug=False, vis=False):
 
     # Pull action configuration
     pull_dir = approaching
-    pull_dist = 0.4
+    pull_dist = env.target_qpos.item() * 1.25 # 0.80*1.25 = 1
     step = 0.1
     total = 0.0
     current_pose = grasp_pose
@@ -77,7 +77,7 @@ def solve(env: OpenDrawerEnv, seed=None, debug=False, vis=False):
         p = next_pose.p
         p[2] = z_fixed
         next_pose = sapien.Pose(p, next_pose.q)
-        res = planner.move_to_pose_with_screw(next_pose, dry_run=False)
+        res = planner.move_to_pose_with_screw(next_pose, dry_run=False, refine_steps=50)
         if res == -1:
             return -1
         current_pose = next_pose

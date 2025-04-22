@@ -28,7 +28,7 @@ CABINET_COLLISION_BIT = 29
 @register_env(
     "OpenDrawer-v1",
     asset_download_ids=["partnet_mobility_cabinet"],
-    max_episode_steps=100,
+    max_episode_steps=50,
 )
 class OpenDrawerEnv(BaseEnv):
     """
@@ -39,7 +39,7 @@ class OpenDrawerEnv(BaseEnv):
     - The cabinet selected to manipulate is randomly sampled from all PartnetMobility cabinets that have drawers
     - The drawer to open is randomly sampled from all drawers available to open
     - Robot starts at a predefined pose with small Gaussian noise on joint positions.
-    - Cabinet base is centered on the floor (z=0) and shifted by +0.6m in x.
+    - Cabinet base is centered on the floor (z=0) and shifted by +0.45m in x.
 
     **Success Conditions:**
     - The drawer is open at least 75% of the way, and the angular/linear velocities of the drawer link are small
@@ -52,9 +52,9 @@ class OpenDrawerEnv(BaseEnv):
     agent: Union[Panda, PandaWristCam]
     handle_types = ["prismatic"]
     TRAIN_JSON = (
-        PACKAGE_ASSET_DIR / "partnet_mobility/meta/info_cabinet_drawer_train_custom.json"
+        PACKAGE_ASSET_DIR / "partnet_mobility/meta/info_cabinet_drawer_train.json"
     )
-    min_open_frac = 0.75
+    min_open_frac = 0.80
 
     def __init__(
         self,
@@ -240,43 +240,8 @@ class OpenDrawerEnv(BaseEnv):
             xy[:, 2] = self.cabinet_zs[env_idx]
 
             # change the x and y position of the cabinet
-            xy[:, :2] += torch.tensor([0.46, 0])
+            xy[:, :2] += torch.tensor([0.45, 0])
             self.cabinet.set_pose(Pose.create_from_pq(p=xy))
-
-            # if self.robot_uids == "panda":
-            #     qpos = torch.tensor(
-            #         [
-            #             0,
-            #             0,
-            #             0,
-            #             0,
-            #             0,
-            #             0,
-            #             0,
-            #             -np.pi / 4,
-            #             0,
-            #             np.pi / 4,
-            #             0,
-            #             np.pi / 3,
-            #             0,
-            #             0.015,
-            #             0.015,
-            #         ]
-            #     )
-            #     qpos = qpos.repeat(b).reshape(b, -1)
-            #     dist = randomization.uniform(1.6, 1.8, size=(b,))
-            #     theta = randomization.uniform(0.9 * torch.pi, 1.1 * torch.pi, size=(b,))
-            #     xy = torch.zeros((b, 2))
-            #     xy[:, 0] += torch.cos(theta) * dist
-            #     xy[:, 1] += torch.sin(theta) * dist
-            #     qpos[:, :2] = xy
-            #     noise_ori = randomization.uniform(
-            #         -0.05 * torch.pi, 0.05 * torch.pi, size=(b,)
-            #     )
-            #     ori = (theta - torch.pi) + noise_ori
-            #     qpos[:, 2] = ori
-            #     self.agent.robot.set_qpos(qpos)
-            #     self.agent.robot.set_pose(sapien.Pose())
 
             # Initialize the robot
             qpos = np.array(
