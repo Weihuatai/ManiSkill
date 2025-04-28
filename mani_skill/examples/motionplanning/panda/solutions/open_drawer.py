@@ -15,10 +15,6 @@ def main():
         render_mode="rgb_array",
         reward_mode="dense",
     )
-    for seed in range(10):
-        res = solve(env, seed=seed, debug=False, vis=True)
-        print(f"seed={seed} result: {res}")
-    env.close()
 
 def solve(env: OpenDrawerEnv, seed=None, debug=False, vis=False):
     env.reset(seed=seed)
@@ -93,6 +89,3 @@ def solve(env: OpenDrawerEnv, seed=None, debug=False, vis=False):
     #     return -1
 
     return res
-
-if __name__ == "__main__":
-    main()
