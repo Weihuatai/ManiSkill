@@ -8,3 +8,12 @@ from .lift_peg_upright import solve as solveLiftPegUpright
 from .pull_cube import solve as solvePullCube
 from .draw_svg import solve as solveDrawSVG
 from .draw_triangle import solve as solveDrawTriangle
+
+# custom solve
+from .pick_cube_green import solve as solvePickCubeGreen
+from .open_drawer import solve as solveOpenDrawer
+from .close_drawer import solve as solveCloseDrawer
+from .push_green_to_red import solve as solvePushGreenToRed
+from .color_order_stack import solve as solveColorOrderStack
+from .rotate_cube import solve as solveRotateCube
+from .pick_banana_margin import solve as solvePickBananaMargin

@@ -17,7 +17,7 @@
     "1013": {
         "num_target_links": 1,
         "partnet_mobility_id": 1013,
-        "scale": 0.574141435277036
+        "scale": 0.474141435277036
     },
     "1016": {
         "num_target_links": 4,
@@ -47,12 +47,7 @@
     "1033": {
         "num_target_links": 3,
         "partnet_mobility_id": 1033,
-        "scale": 0.5483899271738176
-    },
-    "1035": {
-        "num_target_links": 1,
-        "partnet_mobility_id": 1035,
-        "scale": 0.49980123289430295
+        "scale": 0.5083899271738176
     },
     "1038": {
         "num_target_links": 1,
@@ -62,12 +57,7 @@
     "1040": {
         "num_target_links": 1,
         "partnet_mobility_id": 1040,
-        "scale": 0.45687656337449045
-    },
-    "1044": {
-        "num_target_links": 2,
-        "partnet_mobility_id": 1044,
-        "scale": 0.7593626494046017
+        "scale": 0.40687656337449045
     },
     "1045": {
         "num_target_links": 1,
@@ -79,20 +69,10 @@
         "partnet_mobility_id": 1052,
         "scale": 0.5770340450086556
     },
-    "1054": {
-        "num_target_links": 1,
-        "partnet_mobility_id": 1054,
-        "scale": 0.5719235452604696
-    },
     "1056": {
         "num_target_links": 3,
         "partnet_mobility_id": 1056,
         "scale": 0.4621914766849611
-    },
-    "1061": {
-        "num_target_links": 1,
-        "partnet_mobility_id": 1061,
-        "scale": 0.6256945209182192
     },
     "1063": {
         "num_target_links": 1,

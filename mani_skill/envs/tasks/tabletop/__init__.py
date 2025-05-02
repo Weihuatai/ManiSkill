@@ -16,3 +16,14 @@ from .place_sphere import PlaceSphereEnv
 from .roll_ball import RollBallEnv
 from .push_t import PushTEnv
 from .pull_cube_tool import PullCubeToolEnv
+
+#  custom envs
+from .push_green_to_red import PushGreenToRedEnv
+from .pick_cube_green import PickCubeGreenEnv
+from .rotate_cube import RotateCubeEnv
+from .open_drawer import OpenDrawerEnv
+from .close_drawer import CloseDrawerEnv
+from .pick_banana_margin import PickBananaMarginEnv
+from .pick_banana_occlusion import PickBananaOcclusionEnv
+from .color_order_stack import ColorOrderStackEnv
+from .pick_cube_occlusion import PickCubeOcclusionEnv
